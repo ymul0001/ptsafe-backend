@@ -1,0 +1,1 @@
+INSERT INTO `credential` VALUES ('ta272022','ta27_ptsafe','177c7294cd4272a57a7f4fcb04a2b8e0');
