@@ -3,7 +3,7 @@ import numpy as np
 import os
 import urllib.request
 from tensorflow.keras.preprocessing import image
-from flask import Flask, flash, request, redirect, url_for, render_template, jsonify
+from flask import Flask, request,  jsonify
 from werkzeug.utils import secure_filename
 
 upload_folder = "static/container"
