@@ -69,7 +69,8 @@ def predict():
 	pred = model(filename)
 	data = {
 		"status": 200,
-		"message": "The number of people in the picture is around " +  str(int(round(pred[0,0])))
+		"number_people":  int(round(pred[0,0])),
+		"percentage_people": int(round(pred[0,0])) / 84
 	}
 	return jsonify(data)
 	
