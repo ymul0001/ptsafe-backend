@@ -10,6 +10,7 @@ const PORT = process.env.PORT;
 const CredentialRouter = require('./routes/CredentialRoute');
 const NewsRouter = require('./routes/NewsRoute');
 const CommentRouter = require('./routes/CommentRoute');
+const EmergencyRouter = require('./routes/EmergencyRoute');
 
 //configure express dependencies
 app.use(express.json()); 
@@ -21,6 +22,7 @@ app.options('*', cors());
 app.use('/v1/credential', CredentialRouter);
 app.use('/v1/news', NewsRouter);
 app.use('/v1/comment', CommentRouter);
+app.use('/v1/emergency', EmergencyRouter);
 
 app.listen(PORT, () => {
     console.log(`Listening to port ${PORT}`);
