@@ -9,8 +9,10 @@ const StatusCode = require('../../commons/constants/StatusCode');
 const findNewsByNewsLabel = async (req,res) => {
     const newsLabel = req.query.newslabel;
     validateParams(res, newsLabel);
-    const news = await News.findNewsByNewsLabel(newsLabel);
-    validateNewsData(res, news, 'cannot find any news according to the given news label');
+    if (!StringUtils.isNullOrEmpty(newsLabel)) {
+        const news = await News.findNewsByNewsLabel(newsLabel);
+        validateNewsData(res, news, 'cannot find any news according to the given news label');
+    }
 }
 
 const validateParams = (res, newsLabel) => {
@@ -23,7 +25,9 @@ const validateNewsData = (res, news, message) => {
     if (ListUtils.isNullOrEmpty(news[0])) {
         return Response.returnResponse(res, StatusCode.status.DATA_NOT_FOUND_EXCEPTION, message);
     }
-    return Response.returnResponse(res, StatusCode.status.SUCCESS, news);
+    else {
+        return Response.returnResponse(res, StatusCode.status.SUCCESS, news);
+    } 
 }
 
 

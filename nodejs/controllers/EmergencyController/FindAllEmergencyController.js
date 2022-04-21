@@ -15,7 +15,9 @@ const validateEmergencyData = (res, emergency, message) => {
     if (ListUtils.isNullOrEmpty(emergency[0])) {
         return Response.returnResponse(res, StatusCode.status.DATA_NOT_FOUND_EXCEPTION, message);
     }
-    return Response.returnResponse(res, StatusCode.status.SUCCESS, emergency);
+    else {
+        return Response.returnResponse(res, StatusCode.status.SUCCESS, emergency);
+    }
 }
 
 

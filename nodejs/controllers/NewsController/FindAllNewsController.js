@@ -15,7 +15,10 @@ const validateNewsData = (res, news, message) => {
     if (ListUtils.isNullOrEmpty(news[0])) {
         return Response.returnResponse(res, StatusCode.status.DATA_NOT_FOUND_EXCEPTION, message);
     }
-    return Response.returnResponse(res, StatusCode.status.SUCCESS, news);
+    else {
+        return Response.returnResponse(res, StatusCode.status.SUCCESS, news);
+    }
+   
 }
 
 
