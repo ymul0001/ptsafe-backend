@@ -9,8 +9,10 @@ const StatusCode = require('../../commons/constants/StatusCode');
 const findNewsByNewsId = async (req,res) => {
     const newsId = req.query.newsid;
     validateParams(res, newsId);
-    const comments = await Comment.findCommentsByNewsId(newsId);
-    validateCommentsdata(res, comments, 'cannot find any comments according to the given news id');
+    if (!StringUtils.isNullOrEmpty(newsId)) {
+        const comments = await Comment.findCommentsByNewsId(newsId);
+        validateCommentsdata(res, comments, 'cannot find any comments according to the given news id');
+    }
 }
 
 const validateParams = (res, newsId) => {
@@ -23,7 +25,9 @@ const validateCommentsdata = (res, comments, message) => {
     if (ListUtils.isNullOrEmpty(comments[0])) {
         return Response.returnResponse(res, StatusCode.status.DATA_NOT_FOUND_EXCEPTION, message);
     }
-    return Response.returnResponse(res, StatusCode.status.SUCCESS, comments);
+    else {
+        return Response.returnResponse(res, StatusCode.status.SUCCESS, comments);
+    }
 }
 
 

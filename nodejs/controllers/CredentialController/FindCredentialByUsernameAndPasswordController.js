@@ -24,10 +24,10 @@ const validateLoginParams = (res, userName, password) => {
     if (StringUtils.isNullOrEmpty(userName) && StringUtils.isNullOrEmpty(password)) {
         return Response.returnResponse(res, StatusCode.status.BAD_REQUEST_EXCEPTION, 'username and password cannot be empty');
     }
-    if (StringUtils.isNullOrEmpty(userName)) {
+    else if (StringUtils.isNullOrEmpty(userName)) {
         return Response.returnResponse(res, StatusCode.status.BAD_REQUEST_EXCEPTION, 'username cannot be empty');
     }
-    if (StringUtils.isNullOrEmpty(password)) {
+    else if (StringUtils.isNullOrEmpty(password)) {
         return Response.returnResponse(res, StatusCode.status.BAD_REQUEST_EXCEPTION, 'password cannot be empty');
     }
 }
@@ -36,7 +36,9 @@ const validateCredentialsData = (res, credentials, message) => {
     if (ListUtils.isNullOrEmpty(credentials[0])) {
         return Response.returnResponse(res, StatusCode.status.DATA_NOT_FOUND_EXCEPTION, message);
     }
-    return Response.returnResponse(res, StatusCode.status.SUCCESS, credentials);
+    else {
+        return Response.returnResponse(res, StatusCode.status.SUCCESS, credentials);
+    }
 }
 
 
